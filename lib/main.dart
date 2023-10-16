@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:justduit/screen/onboarding_screen.dart';
-import 'package:justduit/screen/signin_screen.dart';
+import 'package:justduit/screen/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const SignInScreen(),
+      home: const loginScreen(),
     );
   }
 }
