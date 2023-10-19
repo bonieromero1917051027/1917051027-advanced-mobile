@@ -32,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               width: 200,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Padding(
@@ -52,12 +52,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 16),
-            padding: EdgeInsets.all(16),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(16)),
             child: Column(
@@ -82,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
                 TextField(
@@ -92,7 +92,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(12)),
                       errorText: isNameValid ? null : "Full Name Tidak Valid"),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Row(
@@ -114,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
                 TextField(
@@ -124,7 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(12)),
                       errorText: isEmailValid ? null : "Email Tidak Valid"),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Row(
@@ -145,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextField(
@@ -156,7 +156,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           borderRadius: BorderRadius.circular(12)),
                       errorText: isPassValid ? null : "Password Tidak Valid"),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Row(
@@ -177,7 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 TextField(
@@ -189,7 +189,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       errorText:
                           passMatch ? null : "Confirm Password tidak sama"),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 12,
                 ),
                 SizedBox(
