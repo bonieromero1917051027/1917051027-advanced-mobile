@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:justduit/screen/root_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen(BuildContext context, {super.key});
@@ -18,6 +20,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool isEmailValid = true;
   bool isPassValid = true;
   bool passMatch = true;
+
+  void setValue(String name, String email) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString("name", name);
+    await prefs.setString("email", email);
+  }
+
+  void redirect() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (prefs.containsKey("name")) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => rootScreen(),
+        ),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    redirect();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -201,7 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue),
-                          onPressed: () {
+                          onPressed: () async {
                             setState(() {
                               isEmailValid =
                                   emailController.text.contains('@') &&
@@ -210,8 +236,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               isPassValid = passController.text.isNotEmpty;
                               passMatch =
                                   passController.text == confController.text &&
-                                      confController.text.isNotEmpty;
+                                      confController.text.isNotEmpty &&
+                                      isPassValid;
                             });
+
+                            if (passMatch && isEmailValid && isNameValid) {
+                              setValue(
+                                  nameController.text, emailController.text);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (builder) => rootScreen(),
+                                ),
+                              );
+                            }
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(20),
@@ -225,16 +263,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                       ),
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text("Sign In",
-                              style: GoogleFonts.poppins(
-                                color: Colors.grey,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                              )))
+                      // TextButton(
+                      //     onPressed: () {
+                      //       Navigator.pop(context);
+                      //     },
+                      //     child: Text("Sign In",
+                      //         style: GoogleFonts.poppins(
+                      //           color: Colors.grey,
+                      //           fontSize: 16,
+                      //           fontWeight: FontWeight.w500,
+                      //         )))
                     ],
                   ),
                 ),
